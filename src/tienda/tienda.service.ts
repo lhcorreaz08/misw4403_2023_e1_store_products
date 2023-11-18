@@ -25,18 +25,24 @@ export class TiendaService {
     }
 
     async create(tienda: TiendaEntity): Promise<TiendaEntity> {
+        if (!['SMR', 'BOG', 'MED'].includes(tienda.ciudad)) {
+            throw new BusinessLogicException("Invalid city code", BusinessError.PRECONDITION_FAILED);
+        }
         return await this.tiendaRepository.save(tienda);
     }
 
     async update(id: string, tienda: TiendaEntity): Promise<TiendaEntity> {
         const persistedTienda: TiendaEntity = await this.tiendaRepository.findOne({where:{id}});
-        if (!persistedTienda) 
+        if (!persistedTienda) {
             throw new BusinessLogicException("The store with the given id was not found", BusinessError.NOT_FOUND);
+        }
+
+        if (!['SMR', 'BOG', 'MED'].includes(tienda.ciudad)) {
+            throw new BusinessLogicException("Invalid city code", BusinessError.PRECONDITION_FAILED);
+        }
 
         tienda.id = id;
-
-        return await this.tiendaRepository.save(tienda);    
-
+        return await this.tiendaRepository.save(tienda);
     }
 
     async delete(id: string) {

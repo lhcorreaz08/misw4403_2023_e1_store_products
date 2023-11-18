@@ -24,7 +24,11 @@ export class ProductoService {
         return producto;
     }
 
+
     async create(producto: ProductoEntity): Promise<ProductoEntity> {
+        if (producto.tipo !== 'Perecedero' && producto.tipo !== 'No perecedero') {
+            throw new BusinessLogicException("Invalid product type", BusinessError.PRECONDITION_FAILED);
+        }
         return await this.productoRepository.save(producto);
     }
 
@@ -33,9 +37,12 @@ export class ProductoService {
         if (!persistedProducto) 
             throw new BusinessLogicException("The product with the given id was not found", BusinessError.NOT_FOUND);
 
+        if (producto.tipo !== 'Perecedero' && producto.tipo !== 'No perecedero') {
+            throw new BusinessLogicException("Invalid product type", BusinessError.PRECONDITION_FAILED);
+        }
+
         producto.id = id;
         return await this.productoRepository.save(producto);    
-
     }
 
     async delete(id: string) {

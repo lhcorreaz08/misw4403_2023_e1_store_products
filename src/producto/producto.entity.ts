@@ -19,6 +19,4 @@ export class ProductoEntity {
     @ManyToMany(() => TiendaEntity, tienda => tienda.productos)
     tiendas: TiendaEntity[];
     
-
-
 }
