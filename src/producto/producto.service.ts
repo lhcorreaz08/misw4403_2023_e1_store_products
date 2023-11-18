@@ -18,7 +18,7 @@ export class ProductoService {
     }
 
     async findOne(id: string): Promise<ProductoEntity> {
-        const producto: ProductoEntity = await this.productoRepository.findOne(id, { relations: ["tiendas"] }); 
+        const producto: ProductoEntity = await this.productoRepository.findOne({ where: {id}, relations: ["tiendas"] }); 
         if (!producto) 
             throw new BusinessLogicException("The product with the given id was not found", BusinessError.NOT_FOUND);
         return producto;
