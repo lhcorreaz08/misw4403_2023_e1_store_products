@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { ProductoEntity } from 'src/producto/producto.entity';
+import { ProductoEntity } from '../producto/producto.entity';
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn, JoinTable } from 'typeorm';
 
 
