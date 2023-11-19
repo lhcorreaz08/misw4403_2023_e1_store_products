@@ -16,6 +16,7 @@ export class ProductoService {
     async findAll(): Promise<ProductoEntity[]> {
         return await this.productoRepository.find({ relations: ["tiendas"] });
     }
+    
 
     async findOne(id: string): Promise<ProductoEntity> {
         const producto: ProductoEntity = await this.productoRepository.findOne({ where: {id}, relations: ["tiendas"] }); 
