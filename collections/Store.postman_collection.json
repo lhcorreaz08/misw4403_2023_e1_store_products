@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "93470a4e-18c1-40b9-bf78-ad62d6d5445b",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23884372"
+	},
+	"item": [
+		{
+			"name": "Crear una tienda válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Carulla\",\r\n  \"ciudad\": \"BOG\",\r\n  \"direccion\": \"Calle 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una tienda Invalido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las tiendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of stores > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener la tienda por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una tienda por ID Invalido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una tienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Carulla\",\r\n  \"ciudad\": \"BOG\",\r\n  \"direccion\": \"Calle 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "33506307-6579-4e28-8f15-d68b73b8a05c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una tienda por ID Invalido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Carulla\",\r\n  \"ciudad\": \"BOG\",\r\n  \"direccion\": \"Calle 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una tienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Carulla\",\r\n  \"ciudad\": \"BOG\",\r\n  \"direccion\": \"Calle 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "33506307-6579-4e28-8f15-d68b73b8a05c"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una tienda con ID Invalido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"15 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/:storeId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						":storeId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

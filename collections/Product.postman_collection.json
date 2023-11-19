@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "4629bdc0-7dbe-4b3f-af7c-a174710b07b0",
+		"name": "Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23884372"
+	},
+	"item": [
+		{
+			"name": "Crear un producto válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"10 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un producto inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"   pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los productos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of products > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un producto por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "011f6046-f5f9-4566-a34a-1b8f1014341e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un producto por ID Invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "011f6046-f5f9-4566-a34a-1b8f1014341f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"15 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "a8892304-a0ed-4cde-8756-457be4508112"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un producto por ID Invalido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"15 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "4e97400e-ee31-4bb7-884c-16a96c44690b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"15 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "a8892304-a0ed-4cde-8756-457be4508112"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un producto con ID Invalido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Galletas Sneaker\",\r\n  \"precio\": \"15 USD\",\r\n  \"tipo\": \"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "4e97400e-ee31-4bb7-884c-16a96c44690a"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

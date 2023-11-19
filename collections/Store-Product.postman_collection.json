@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "e0f02ba4-dcb4-4d43-9aaa-451ccf9a2ca2",
+		"name": "Store-Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23884372"
+	},
+	"item": [
+		{
+			"name": "Agregar una nueva tienda a producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						},
+						{
+							"key": "productId",
+							"value": "96258785-c50f-40c2-a68b-d407e9185eaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar una tienda que no existe a un producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f5"
+						},
+						{
+							"key": "productId",
+							"value": "96258785-c50f-40c2-a68b-d407e9185eaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las tiendas que ofrecen un producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los productos que ofrece una tienda",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						""
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una tienda de un producto que no existe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						},
+						{
+							"key": "productId",
+							"value": "96258785-c50f-40c2-a68b-d407e9185eab"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar las tiendas que ofrecen un producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"64ad7a6f-0979-430a-93f3-be536f3378f6\",\r\n    \"nombre\": \"Carulla\",\r\n    \"ciudad\": \"BOG\",\r\n    \"direccion\": \"Calle 123\",\r\n    \"productos\": {\r\n        \"storeId\": \"64ad7a6f-0979-430a-93f3-be536f3378f6\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar las tiendas que ofrecen un producto Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"64ad7a6f-0979-430a-93f3-be536f3378f6\",\r\n    \"nombre\": \"Carulla\",\r\n    \"ciudad\": \"BOG\",\r\n    \"direccion\": \"Calle 123\",\r\n    \"productos\": {\r\n        \"storeId\": \"64ad7a6f-0979-430a-93f3-be536f3378f6\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una tienda que ofrece un producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						},
+						{
+							"key": "productId",
+							"value": "96258785-c50f-40c2-a68b-d407e9185eaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una tienda que no ofrece un producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/tienda-producto/:storeId/products/:productId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"tienda-producto",
+						":storeId",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "storeId",
+							"value": "64ad7a6f-0979-430a-93f3-be536f3378f6"
+						},
+						{
+							"key": "productId",
+							"value": "96258785-c50f-40c2-a68b-d407e9185eaa"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
